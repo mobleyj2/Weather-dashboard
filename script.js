@@ -1,38 +1,57 @@
-////text box
 
-var text= document.createElement("INPUT");
-text.setAttribute("type","text");
+//const api_url = "api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=51241d70f9864f731416c8455e0e7870"
+//fetch("http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid=51241d70f9864f731416c8455e0e7870", {
+//fetch ("http://api.openweathermap.org/geo/1.0/direct?q={bloomington},{state code},{country code}&limit={limit}&appid=API51241d70f9864f731416c8455e0e7870 key")
+// location     http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
 
 
-//// add api for link 5 dayforcast
 
-    /////////
+//function myFunction() {
+  //  document.getElementById("mytext").Search();
+ 
+//};
+//fetch('https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=51241d70f9864f731416c8455e0e7870')
+//.then (res => res.json())
+//.then(data =>console.log(data))
 
-    //const api_url = "api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=51241d70f9864f731416c8455e0e7870"
-    
-    fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/New%20York%20City%2CNY?unitGroup=us&key=51241d70f9864f731416c8455e0e7870&contentType=json", {
-        method: 'GET', 
-        headers: {
-       
-        },
-                 
-      }).then(response => {
-        if (!response.ok) {
-          throw response; //check the http response code and if isn't ok then throw the response as an error
-        }
-                  
-        return response.json(); //parse the result as JSON
-      
-      }).then(response => {
-        //response now contains parsed JSON ready for use
-        processWeatherData(response);
-      
-      }).catch((errorResponse) => {
-        if (errorResponse.text) { //additional error information
-          errorResponse.text().then( errorMessage => {
-            //errorMessage now returns the response body which includes the full error message
-          })
-        } else {
-          //no additional error information 
-        } 
-      });
+
+//fetch ('http://api.openweathermap.org/geo/1.0/direct?q=bloomington&limit=1&appid=51241d70f9864f731416c8455e0e7870')
+//.then (res => res.json())
+//.then(data =>console.log(data))
+
+
+let weather ={
+    "apiKey": "51241d70f9864f731416c8455e0e7870",
+fetchWeather: function(city){
+fetch(
+    'http://api.openweathermap.org/geo/1.0/direct?q=' + city +'&limit=1&appid='+ this.apiKey
+)
+.then((response)=> response.json())
+.then((data)=>this.displayWeather(data));
+
+},
+  displayWeather: function(data){
+const {name} = data;
+const {description}= data.weather[0];
+const {temp, humidity} = data.main;
+console.log(name,description,temp,humidity)
+document.querySelector(". city").innerText = "Weather in " + name;
+document.querySelector(". description").innerText = description
+document.querySelector(". temp").innerText = temp;
+document.querySelector(". humidity ").innerText = humidity+ "%";
+
+  },
+  search: function(){
+this.fetchWeather(document.querySelector(".search-bar").value);
+  }
+};
+document.querySelector(".search button").addEventListener("click",function(){
+weather.search();
+});
+document.querySelector(".search button").addEventListener("click",function(event){
+if (event.key == "Enter"){
+    weather.search();
+}
+}
+);
+weather.fetchWeather("Denver"); 

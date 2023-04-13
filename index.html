@@ -1,46 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <header><h1>
-        Weather Dashboard
-    </header></h1>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Weather DashBoard</title>
 </head>
 <body>
-    
-    <input type"text" id="mytext"
-    value="Enter A City to search"<div></div>
-    <br>
-    <br>
-
-    <div>
+    <div class ="card">
+        <div class ="search">
+        <input type="text">
+        <div class="search-bar">
+    <button class="button">Submit</button>
     </div>
-    <button id="Search" button>Search for City</button>
-    <br>
-    <br>
-
-<!-- The grid: five columns -->
-<div class="rows">
-    <br>
-    <div class="column" style="background:red;">Box 1</div>
-    <div class="column" style="background:red;">Box 2</div>
-    <div class="column" style="background:red;">Box 3</div>
-    <div class="column" style="background:red;">Box 4</div>
-    <div class="column" style="background:red;">Box 5</div>
-  
-  <div id="b1" class="b1" style="display:none;background:rgb(0, 255, 8)">
-    <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
-    <h2>Box 1</h2>
-    <p>Lorem ipsum..</p>
-  </div>
-<!---colums rows------------->
+     <div class="weather">
+        <h2 class="city"></h2><class></h2>
+        <div class ="temp"></div>
+     </div>
+     <displayWeather>
+       
 
 
-    <script src="script.js"></script>
+     </displayWeather>
 </body>
 </html>
